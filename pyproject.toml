@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "simplex-chat-py"
+version = "0.1.0"
+description = "Python client library for the SimpleX Chat bot API"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Prince", email = "princea747y375@gmail.com" }]
+keywords = ["simplex", "chat", "bot", "messaging", "privacy"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Communications :: Chat",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Framework :: AsyncIO",
+]
+requires-python = ">=3.10"
+dependencies = ["websockets>=12.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23"]
+
+[project.urls]
+Homepage = "https://github.com/JnanaSrota/simplex-chat-py"
+Repository = "https://github.com/JnanaSrota/simplex-chat-py"
+"Bug Tracker" = "https://github.com/JnanaSrota/simplex-chat-py/issues"
+Documentation = "https://github.com/JnanaSrota/simplex-chat-py#readme"
+
+[tool.setuptools.packages.find]
+include = ["simplex_chat*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
