@@ -18,19 +18,22 @@ SimpleX is the first messaging network with no user identifiers — 100% private
 curl -o- https://raw.githubusercontent.com/simplex-chat/simplex-chat/stable/install.sh | bash
 ```
 
-**2. Start it as a WebSocket server (create a profile on first run):**
+**2. Start the WebSocket server (create a profile on first run):**
 
 ```bash
 simplex-chat -p 5225
 ```
 
-Inside the CLI, set your bot's address to auto-accept connections:
-```
+**3. In a second terminal, open the interactive CLI to get your bot's address and enable auto-accept:**
+
+```bash
+simplex-chat
 /address
 /auto_accept on
+/exit
 ```
 
-**3. Install this library:**
+**4. Install this library:**
 
 ```bash
 pip install simplex-chat-py
@@ -161,7 +164,7 @@ await client.connect()
 user = await client.get_active_user()
 user_id = user["user"]["userId"]
 
-await client.send_message(contact_id=7, text="Hello!")
+await client.send_message("alice", text="Hello!")
 await client.send_group_message(group_id=3, text="Hello group!")
 ```
 
@@ -172,11 +175,11 @@ All commands from [bots/api/COMMANDS.md](https://github.com/simplex-chat/simplex
 | `create_address(user_id)` | `APICreateMyAddress` |
 | `show_address(user_id)` | `APIShowMyAddress` |
 | `set_address_settings(user_id, settings)` | `APISetAddressSettings` |
-| `send_message(contact_id, text)` | `APISendMessages` |
+| `send_message(contact_name, text)` | `APISendMessages` |
 | `send_group_message(group_id, text)` | `APISendMessages` |
-| `update_message(contact_id, item_id, text)` | `APIUpdateChatItem` |
-| `delete_message(contact_id, item_id)` | `APIDeleteChatItem` |
-| `react_to_message(contact_id, item_id, reaction)` | `APIChatItemReaction` |
+| `update_message(contact_name, item_id, text)` | `APIUpdateChatItem` |
+| `delete_message(contact_name, item_id)` | `APIDeleteChatItem` |
+| `react_to_message(contact_name, item_id, reaction)` | `APIChatItemReaction` |
 | `receive_file(file_id)` | `ReceiveFile` |
 | `list_contacts(user_id)` | `APIListContacts` |
 | `accept_contact(req_id)` | `APIAcceptContact` |
